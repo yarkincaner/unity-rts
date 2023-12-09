@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class CameraController : MonoBehaviour
 {
@@ -24,30 +25,38 @@ public class CameraController : MonoBehaviour
     public Vector3 rotateStartPosition;
     public Vector3 rotateCurrentPosition;
 
+    PhotonView pw;
+
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
-        newPosition = transform.position;
-        newRotation = transform.rotation;
-        newZoom = cameraTransform.localPosition;
+        pw = GetComponent<PhotonView>();
+        if (!pw.IsMine) {
+            instance = this;
+            newPosition = transform.position;
+            newRotation = transform.rotation;
+            newZoom = cameraTransform.localPosition;
+        }
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (followTransform != null)
-        {
-            transform.position = followTransform.position;
-        } else
-        {
-            HandleMouseInput();
-            HandleMovementInput();
-        }
+        if (!pw.IsMine) {
+            if (followTransform != null)
+            {
+                transform.position = followTransform.position;
+            }
+            else
+            {
+                //HandleMouseInput();
+                HandleMovementInput();
+            }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            followTransform = null;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                followTransform = null;
+            }
         }
     }
 

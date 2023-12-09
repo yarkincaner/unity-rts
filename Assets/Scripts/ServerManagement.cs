@@ -43,6 +43,7 @@ public class ServerManagement : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Connected to the Room");
+        GameObject gameObject = PhotonNetwork.Instantiate("Camera Rig", Vector3.zero, Quaternion.identity, 0, null);
     }
 
     public override void OnLeftRoom()
