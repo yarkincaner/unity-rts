@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum PlacementMode
 {
@@ -22,11 +23,15 @@ public class BuildingManager : MonoBehaviour
 
     private int nObstacles;
 
+    private GameObject unitsMenu;
+
     private void Awake()
     {
         hasValidPlacement = true;
         isFixed = true;
         nObstacles = 0;
+        unitsMenu = GameObject.FindWithTag("UnitsMenu");
+        unitsMenu.SetActive(false);
 
         InitializeMaterials();
     }
@@ -124,4 +129,15 @@ public class BuildingManager : MonoBehaviour
         return ((1 << o.layer) & BuildingPlacer.instance.terrainLayerMask.value) != 0;
     }
 
+    private void OnMouseDown()
+    {
+        // if photonview isMine
+        if (unitsMenu.activeInHierarchy)
+        {
+            unitsMenu.SetActive(false);
+        } else
+        {
+            unitsMenu.SetActive(true);
+        }
+    }
 }
