@@ -44,6 +44,14 @@ public class ServerManagement : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connected to the Room");
         GameObject gameObject = PhotonNetwork.Instantiate("Camera Rig", Vector3.zero, Quaternion.identity, 0, null);
+        PhotonView pv = gameObject.GetComponent<PhotonView>();
+        pv.Owner.NickName = "Player" + pv.ViewID;
+        gameObject.name = pv.Owner.NickName;
+        GameObject otherCamera = GameObject.Find("Camera Rig(Clone)");
+        if (otherCamera != null )
+        {
+            otherCamera.SetActive(false);
+        }
     }
 
     public override void OnLeftRoom()

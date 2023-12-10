@@ -25,24 +25,21 @@ public class CameraController : MonoBehaviour
     public Vector3 rotateStartPosition;
     public Vector3 rotateCurrentPosition;
 
-    PhotonView pw;
+    PhotonView pv;
 
     // Start is called before the first frame update
     void Start()
     {
-        pw = GetComponent<PhotonView>();
-        if (!pw.IsMine) {
-            instance = this;
-            newPosition = transform.position;
-            newRotation = transform.rotation;
-            newZoom = cameraTransform.localPosition;
-        }
+        //pv = GetComponent<PhotonView>();
+        instance = this;
+        newPosition = transform.position;
+        newRotation = transform.rotation;
+        newZoom = cameraTransform.localPosition;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!pw.IsMine) {
             if (followTransform != null)
             {
                 transform.position = followTransform.position;
@@ -57,7 +54,6 @@ public class CameraController : MonoBehaviour
             {
                 followTransform = null;
             }
-        }
     }
 
     void HandleMouseInput()
