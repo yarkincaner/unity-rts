@@ -5,151 +5,76 @@ using Photon.Pun;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController instance;
-    public Transform cameraTransform;
-    public Transform followTransform;
+    float speed = 0.02f;
+    float zoomSpeed = 1.0f;
+    float rotateSpeed = 0.001f;
 
-    public float normalSpeed;
-    public float fastSpeed;
-    public float movementSpeed;
-    public float movementTime;
-    public float rotationAmount;
-    public Vector3 zoomAmount;
+    float maxHeight = 60f;
+    float minHeight = 10f;
 
-    public Vector3 newPosition;
-    public Quaternion newRotation;
-    public Vector3 newZoom;
+    Vector2 p1;
+    Vector2 p2;
 
-    public Vector3 dragStartPosition;
-    public Vector3 dragCurrentPosition;
-    public Vector3 rotateStartPosition;
-    public Vector3 rotateCurrentPosition;
-
-    //PhotonView pv;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        //pv = GetComponent<PhotonView>();
-        instance = this;
-        newPosition = transform.position;
-        newRotation = transform.rotation;
-        newZoom = cameraTransform.localPosition;
-    }
-
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        if (followTransform != null)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            transform.position = followTransform.position;
-        }
-        else
-        {
-            //HandleMouseInput();
-            HandleMovementInput();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            followTransform = null;
-        }
-    }
-
-    void HandleMovementInput()
-    {
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            movementSpeed = fastSpeed;
+            speed = 0.02f;
+            zoomSpeed = 2.0f;
         } else
         {
-            movementSpeed = normalSpeed;
+            speed = 0.01f;
+            zoomSpeed = 1.0f;
         }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-            newPosition += (transform.forward * movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        float horizontalSpeed = transform.position.y * speed * Input.GetAxis("Horizontal");
+        float verticalSpeed = transform.position.y * speed * Input.GetAxis("Vertical");
+        float scrollSpeed = transform.position.y * zoomSpeed * Input.GetAxis("Mouse ScrollWheel");
+
+        if ((transform.position.y >= maxHeight) &&  (scrollSpeed > 0))
         {
-            newPosition += (transform.forward * -movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            scrollSpeed = 0;
+        } else if ((transform.position.y <= minHeight) && (scrollSpeed < 0))
         {
-            newPosition += (transform.right * movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            newPosition += (transform.right * -movementSpeed);
+            scrollSpeed = 0;
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if ((transform.position.y + scrollSpeed) > maxHeight) {
+            scrollSpeed = maxHeight - transform.position.y;
+        } else if ((transform.position.y + scrollSpeed) < minHeight)
         {
-            newRotation *= Quaternion.Euler(Vector3.up * rotationAmount);
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            newRotation *= Quaternion.Euler(Vector3.up * -rotationAmount);
+            scrollSpeed = minHeight - transform.position.y;
         }
 
-        if (Input.GetKey(KeyCode.R))
-        {
-            newZoom += zoomAmount;
-        }
-        if (Input.GetKey(KeyCode.F))
-        {
-            newZoom -= zoomAmount;
-        }
+        Vector3 verticalMove = new Vector3(0, scrollSpeed, 0);
+        Vector3 lateralMove = horizontalSpeed * transform.right;
+        Vector3 forwardMove = transform.forward;
+        forwardMove.y = 0;
+        forwardMove.Normalize();
+        forwardMove *= verticalSpeed;
 
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
-        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationAmount);
-        cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
+        Vector3 move = verticalMove + lateralMove + forwardMove;
+        Vector3 newPosition = transform.position += move;
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 0.5f);
+
+        getCameraRotation();
     }
 
-    //void HandleMouseInput()
-    //{
-    //    if (Input.mouseScrollDelta.y != 0)
-    //    {
-    //        newZoom += Input.mouseScrollDelta.y * zoomAmount;
-    //    }
+    void getCameraRotation()
+    {
+        if (Input.GetMouseButtonDown(2)) {
+            p1 = Input.mousePosition;
+        }
 
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        Plane plane = new Plane(Vector3.up, Vector3.zero);
+        if (Input.GetMouseButton(2))
+        {
+            p2 = Input.mousePosition;
+            float dx = (p2 - p1).x * rotateSpeed;
+            float dy = (p2 - p1).y * rotateSpeed;
 
-    //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            transform.rotation *= Quaternion.Euler(new Vector3(0, dx, 0));
 
-    //        float entry;
-
-    //        if (plane.Raycast(ray, out entry))
-    //        {
-    //            dragStartPosition = ray.GetPoint(entry);
-    //        }
-    //    }
-
-    //    if (Input.GetMouseButton(0))
-    //    {
-    //        Plane plane = new Plane(Vector3.up, Vector3.zero);
-
-    //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-    //        float entry;
-
-    //        if (plane.Raycast(ray, out entry))
-    //        {
-    //            dragCurrentPosition = ray.GetPoint(entry);
-    //            newPosition = transform.position + dragStartPosition - dragCurrentPosition;
-    //        }
-    //    }
-
-    //    if (Input.GetMouseButtonDown(2))
-    //    {
-    //        rotateStartPosition = Input.mousePosition;
-    //    }
-    //    if (Input.GetMouseButton(2))
-    //    {
-    //        rotateCurrentPosition = Input.mousePosition;
-    //        Vector3 difference = rotateStartPosition - rotateCurrentPosition;
-    //        rotateStartPosition = rotateCurrentPosition;
-    //        newRotation *= Quaternion.Euler(Vector3.up * (-difference.x / 5f));
-    //    }
-    //}
+            transform.GetChild(0).transform.rotation *= Quaternion.Euler(new Vector3(-dy, 0, 0));
+        }
+    }
 }
