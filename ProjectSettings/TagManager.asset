@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - UnitsMenu
+  - Selectable
   layers:
   - Default
   - TransparentFX
