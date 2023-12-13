@@ -15,9 +15,12 @@ GameObject:
   - component: {fileID: 7242288140474589506}
   - component: {fileID: 6131091256498097705}
   - component: {fileID: 1140610711101789692}
+  - component: {fileID: -323602830778439537}
+  - component: {fileID: -5004882715851452364}
+  - component: {fileID: -4076807041360573829}
   m_Layer: 8
   m_Name: Fir_Tree
-  m_TagString: Untagged
+  m_TagString: Source
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,8 +112,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -133,7 +136,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.8857777
+  m_Radius: 1.88
   m_Height: 5.71314
   m_Direction: 1
   m_Center: {x: -0.000039458275, y: 2.8566525, z: -0.00022572279}
@@ -172,3 +175,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfWoods: 10
+--- !u!208 &-323602830778439537
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192044}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 2, y: 3.5, z: 2}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 2.857, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &-5004882715851452364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08eb734edabf2f4792e4828f2ce96dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4076807041360573829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1d9634a78a5e64dba99b2da0769dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
