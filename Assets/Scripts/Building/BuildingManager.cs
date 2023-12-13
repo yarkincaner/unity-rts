@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public enum PlacementMode
     Invalid
 }
 
-public class BuildingManager : MonoBehaviour
+public class BuildingManager : MonoBehaviourPunCallbacks
 {
     public Material validPlacementMaterial;
     public Material invalidPlacementMaterial;
@@ -66,6 +67,7 @@ public class BuildingManager : MonoBehaviour
     }
 #endif
 
+    [PunRPC]
     public void SetPlacementMode(PlacementMode mode)
     {
         if (mode == PlacementMode.Fixed)
@@ -139,5 +141,11 @@ public class BuildingManager : MonoBehaviour
         {
             unitsMenu.SetActive(true);
         }
+    }
+
+    [PunRPC]
+    public void setIsFixed(bool isFixed)
+    {
+        this.isFixed = isFixed;
     }
 }
