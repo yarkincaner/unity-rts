@@ -34,14 +34,7 @@ public class BuildingManager : MonoBehaviourPunCallbacks
         nObstacles = 0;
         slot1_button = GameObject.Find("Slot1_Button");
         slot2_button = GameObject.Find("Slot2_Button");
-        
-        slot1_button.GetComponent<Image>().enabled = false;
-        slot1_button.GetComponent<Button>().enabled = false;
-        slot2_button.GetComponent<Image>().enabled = false;
-        slot2_button.GetComponent<Button>().enabled = false;
-        //unitsMenuImage = unitsMenu.GetComponent<Image>();
-        //unitsMenuImage.enabled = false;
-        //unitsMenu.SetActive(false);
+        HideUI();
 
         InitializeMaterials();
     }
@@ -146,27 +139,11 @@ public class BuildingManager : MonoBehaviourPunCallbacks
         {
             if (slot1_button.GetComponent<Image>().enabled)
             {
-                slot1_button.GetComponent<Image>().enabled = false;
-                slot1_button.GetComponent<Button>().enabled = false;
-                slot2_button.GetComponent<Image>().enabled = false;
-                slot2_button.GetComponent<Button>().enabled = false;
+                HideUI();
             } else
             {
-                slot1_button.GetComponent<Image>().enabled = true;
-                slot1_button.GetComponent<Button>().enabled = true;
-                slot2_button.GetComponent<Image>().enabled = true;
-                slot2_button.GetComponent<Button>().enabled = true;
+                ShowUI();
             }
-            //if (unitsMenu.activeInHierarchy)
-            //{
-            //    unitsMenuImage.enabled = false;
-            //    //unitsMenu.SetActive(false);
-            //}
-            //else
-            //{
-            //    unitsMenuImage.enabled = false;
-            //    //unitsMenu.SetActive(true);
-            //}
         }
     }
 
@@ -178,6 +155,17 @@ public class BuildingManager : MonoBehaviourPunCallbacks
 
     void HideUI()
     {
+        slot1_button.GetComponent<Image>().enabled = false;
+        slot1_button.GetComponent<Button>().enabled = false;
+        slot2_button.GetComponent<Image>().enabled = false;
+        slot2_button.GetComponent<Button>().enabled = false;
+    }
 
+    void ShowUI()
+    {
+        slot1_button.GetComponent<Image>().enabled = true;
+        slot1_button.GetComponent<Button>().enabled = true;
+        slot2_button.GetComponent<Image>().enabled = true;
+        slot2_button.GetComponent<Button>().enabled = true;
     }
 }
