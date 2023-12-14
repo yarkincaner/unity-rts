@@ -63,6 +63,7 @@ public class BuildingPlacer : MonoBehaviourPunCallbacks
                     BuildingManager manager = toBuild.GetComponent<BuildingManager>();
                     if (manager.hasValidPlacement)
                     {
+                        //manager.SetPlacementMode(PlacementMode.Fixed);
                         toBuild.GetComponent<BuildingManager>().gameObject.GetComponent<PhotonView>().RPC("SetPlacementMode", RpcTarget.All, PlacementMode.Fixed);
 
                         // shift-key: chain builds
@@ -100,10 +101,10 @@ public class BuildingPlacer : MonoBehaviourPunCallbacks
         toBuild = PhotonNetwork.Instantiate(buildingPrefab.name, Vector3.zero, Quaternion.identity);
         toBuild.SetActive(false);
 
-        //BuildingManager manager = toBuild.GetComponent<BuildingManager>();
-        //manager.isFixed = false;
-        //manager.SetPlacementMode(PlacementMode.Valid);
-        toBuild.GetComponent<BuildingManager>().gameObject.GetComponent<PhotonView>().RPC("setIsFixed", RpcTarget.All, false);
+        BuildingManager manager = toBuild.GetComponent<BuildingManager>();
+        manager.isFixed = false;
+        manager.SetPlacementMode(PlacementMode.Valid);
+        //toBuild.GetComponent<BuildingManager>().gameObject.GetComponent<PhotonView>().RPC("setIsFixed", RpcTarget.All, false);
         toBuild.GetComponent<BuildingManager>().gameObject.GetComponent<PhotonView>().RPC("SetPlacementMode", RpcTarget.All, PlacementMode.Valid);
     }
 

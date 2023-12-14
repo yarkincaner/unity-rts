@@ -24,15 +24,24 @@ public class BuildingManager : MonoBehaviourPunCallbacks
 
     private int nObstacles;
 
-    private GameObject unitsMenu;
+    private GameObject slot1_button;
+    private GameObject slot2_button;
 
     private void Awake()
     {
         hasValidPlacement = true;
         isFixed = true;
         nObstacles = 0;
-        unitsMenu = GameObject.FindWithTag("UnitsMenu");
-        unitsMenu.SetActive(false);
+        slot1_button = GameObject.Find("Slot1_Button");
+        slot2_button = GameObject.Find("Slot2_Button");
+        
+        slot1_button.GetComponent<Image>().enabled = false;
+        slot1_button.GetComponent<Button>().enabled = false;
+        slot2_button.GetComponent<Image>().enabled = false;
+        slot2_button.GetComponent<Button>().enabled = false;
+        //unitsMenuImage = unitsMenu.GetComponent<Image>();
+        //unitsMenuImage.enabled = false;
+        //unitsMenu.SetActive(false);
 
         InitializeMaterials();
     }
@@ -133,13 +142,31 @@ public class BuildingManager : MonoBehaviourPunCallbacks
 
     private void OnMouseDown()
     {
-        // if photonview isMine
-        if (unitsMenu.activeInHierarchy)
+        if (photonView.IsMine)
         {
-            unitsMenu.SetActive(false);
-        } else
-        {
-            unitsMenu.SetActive(true);
+            if (slot1_button.GetComponent<Image>().enabled)
+            {
+                slot1_button.GetComponent<Image>().enabled = false;
+                slot1_button.GetComponent<Button>().enabled = false;
+                slot2_button.GetComponent<Image>().enabled = false;
+                slot2_button.GetComponent<Button>().enabled = false;
+            } else
+            {
+                slot1_button.GetComponent<Image>().enabled = true;
+                slot1_button.GetComponent<Button>().enabled = true;
+                slot2_button.GetComponent<Image>().enabled = true;
+                slot2_button.GetComponent<Button>().enabled = true;
+            }
+            //if (unitsMenu.activeInHierarchy)
+            //{
+            //    unitsMenuImage.enabled = false;
+            //    //unitsMenu.SetActive(false);
+            //}
+            //else
+            //{
+            //    unitsMenuImage.enabled = false;
+            //    //unitsMenu.SetActive(true);
+            //}
         }
     }
 
@@ -147,5 +174,10 @@ public class BuildingManager : MonoBehaviourPunCallbacks
     public void setIsFixed(bool isFixed)
     {
         this.isFixed = isFixed;
+    }
+
+    void HideUI()
+    {
+
     }
 }
