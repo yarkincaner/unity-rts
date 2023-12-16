@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         foreach (RaycastHit hit in hits)
         {
             CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-            if (target == null)
+            if (target == null || !target.getIsEnemy())
             {
                 continue;
             }

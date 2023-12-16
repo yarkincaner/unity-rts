@@ -1,18 +1,16 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatTarget : MonoBehaviour
+public class CombatTarget : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
+    private bool isEnemey;
+
     void Start()
     {
-        
+        isEnemey = !photonView.IsMine;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool getIsEnemy() { return isEnemey; }
 }
