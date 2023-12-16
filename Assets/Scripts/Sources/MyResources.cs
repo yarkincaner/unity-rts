@@ -8,20 +8,11 @@ public class MyResources : MonoBehaviourPunCallbacks
 {
     private int woodsAmount;
     private int stonesAmount;
-    private GameObject woodsObject;
-    private GameObject stonesObject;
-    private TextMeshProUGUI woodsText;
-    private TextMeshProUGUI stonesText;
+    [SerializeField] private TextMeshProUGUI woodsText;
+    [SerializeField] private TextMeshProUGUI stonesText;
 
-    // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("MyResources");
-        woodsObject = GameObject.Find("WoodsAmount");
-        stonesObject = GameObject.Find("StoneAmount");
-        woodsText = woodsObject.GetComponent<TextMeshProUGUI>();
-        stonesText = stonesObject.GetComponent<TextMeshProUGUI>();
-
         if (photonView.IsMine)
         {
             woodsAmount = 10;

@@ -180,8 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c61997bc4d5bb348974126cd4199947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedPlayerPrefab: {fileID: 6247439265042590832, guid: 1f7548eac0e893f4288258e9719bb71c, type: 3}
-  uiPrefab: {fileID: 8792062443321842901, guid: 8cb720d53f3068b4586479f80ffce2f8, type: 3}
+  spawnedPlayerPrefab: {fileID: 1136217511929243243, guid: 1f7548eac0e893f4288258e9719bb71c, type: 3}
   resources: {fileID: 5710337757393920012, guid: b555e11bfc8d3754e834f26c14d0c827, type: 3}
   spawnPosition: {x: 50, y: 10, z: 60}
 --- !u!1 &703073303

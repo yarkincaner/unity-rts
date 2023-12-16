@@ -44,7 +44,8 @@ public class Fighter : MonoBehaviourPunCallbacks, IAction
         if (photonView.IsMine)
         {
             Health health = targetObject.GetComponent<Health>();
-            health.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, weaponDamage);
+            object[] parameters = new object[] { weaponDamage, this.gameObject.GetComponent<PhotonView>().Owner.NickName };
+            health.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, parameters);
         }
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject spawnedPlayerPrefab;
-    [SerializeField] GameObject uiPrefab;
+    //[SerializeField] GameObject uiPrefab;
     [SerializeField] GameObject resources;
     public Vector3 spawnPosition;
 
@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         spawnedPlayerPrefab = PhotonNetwork.Instantiate(spawnedPlayerPrefab.name, spawnPosition, Quaternion.identity, 0, null);
         spawnedPlayerPrefab.name = PhotonNetwork.NickName;
-        uiPrefab = PhotonNetwork.Instantiate(uiPrefab.name, spawnPosition, Quaternion.identity, 0, null);
+        //uiPrefab = PhotonNetwork.Instantiate(uiPrefab.name, spawnPosition, Quaternion.identity, 0, null);
     }
 
     public override void OnCreatedRoom()
@@ -28,6 +28,6 @@ public class SpawnManager : MonoBehaviourPunCallbacks
     {
         base.OnLeftRoom();
         PhotonNetwork.Destroy(spawnedPlayerPrefab);
-        PhotonNetwork.Destroy(uiPrefab);
+        //PhotonNetwork.Destroy(uiPrefab);
     }
 }

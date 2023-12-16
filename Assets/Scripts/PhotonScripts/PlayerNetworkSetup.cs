@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private GameObject instantiatedObject;
+    [SerializeField] private GameObject localCamera;
+    [SerializeField] private GameObject localUI;
 
     // Start is called before the first frame update
     void Start()
@@ -13,12 +14,16 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             //the player is local
-            instantiatedObject.SetActive(true);
+            localCamera.SetActive(true);
+            localCamera.transform.parent.tag = "Player";
+            localUI.SetActive(true);
         }
         else
         {
             //the player is remote
-            instantiatedObject.SetActive(false);
+            localCamera.SetActive(false);
+            localCamera.transform.parent.tag = "Untagged";
+            localUI.SetActive(false);
         }
     }
 }
