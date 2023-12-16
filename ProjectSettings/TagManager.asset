@@ -10,6 +10,7 @@ TagManager:
   - Source
   - Tree
   - Stone
+  - Building
   layers:
   - Default
   - TransparentFX

@@ -13,9 +13,9 @@ public class Fighter : MonoBehaviourPunCallbacks, IAction
     float timeSinceLastAttack;
     private void Start()
     {
-        //weaponRange = 2.0f;
-        //weaponDamage = 10f;
-        //timeBetweenAttacks = 1f;
+        weaponRange = 5.0f;
+        weaponDamage = 10f;
+        timeBetweenAttacks = 1f;
     }
     private void Update()
     {
@@ -60,11 +60,16 @@ public class Fighter : MonoBehaviourPunCallbacks, IAction
         }
     }
 
-
-
     public void Attack(CombatTarget target)
     {
         GetComponent<ActionScheduler>().StartAction(this);
+        if (target.tag == "Building")
+        {
+            weaponRange = 10.0f;
+        } else
+        {
+            weaponRange = 5.0f;
+        }
         targetObject = target.transform;
         //Debug.Log("Attack is done");
     }
