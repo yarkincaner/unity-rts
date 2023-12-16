@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private GameObject localCameraRig;
+    [SerializeField] private GameObject instantiatedObject;
 
     // Start is called before the first frame update
     void Start()
@@ -13,13 +13,12 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             //the player is local
-            localCameraRig.SetActive(true);
+            instantiatedObject.SetActive(true);
         }
         else
         {
-            //the player is remote 
-            //If it is not local player, we will disable the XR origin gameobject under the generic VR player.
-            localCameraRig.SetActive(false);
+            //the player is remote
+            instantiatedObject.SetActive(false);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fighter : MonoBehaviour, IAction
+public class Fighter : MonoBehaviourPunCallbacks, IAction
 {
     [SerializeField] float timeBetweenAttacks;
     [SerializeField] float weaponRange;
@@ -41,8 +41,11 @@ public class Fighter : MonoBehaviour, IAction
     }
     void Hit()
     {
-        Health health = targetObject.GetComponent<Health>();
-        health.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, weaponDamage);
+        if (photonView.IsMine)
+        {
+            Health health = targetObject.GetComponent<Health>();
+            health.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, weaponDamage);
+        }
     }
 
     [PunRPC]

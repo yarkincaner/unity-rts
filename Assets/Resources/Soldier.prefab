@@ -142,7 +142,6 @@ GameObject:
   - component: {fileID: 6087388433699166428}
   - component: {fileID: 1627054279712965406}
   - component: {fileID: -6218420207664773159}
-  - component: {fileID: -6613608419303999973}
   - component: {fileID: 7628138303802022446}
   - component: {fileID: 5374281953024885570}
   - component: {fileID: 1582903750072738729}
@@ -300,18 +299,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &-6613608419303999973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215339698331773819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9713512402be7e42bf7342b6dac6c4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &7628138303802022446
 NavMeshAgent:
   m_ObjectHideFlags: 0

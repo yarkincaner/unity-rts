@@ -14,13 +14,13 @@ GameObject:
   - component: {fileID: -5663480123276470746}
   - component: {fileID: 7242288140474589506}
   - component: {fileID: 6131091256498097705}
-  - component: {fileID: 1140610711101789692}
   - component: {fileID: -323602830778439537}
   - component: {fileID: -5004882715851452364}
   - component: {fileID: -4076807041360573829}
+  - component: {fileID: -7800483266069121709}
   m_Layer: 8
   m_Name: Fir_Tree
-  m_TagString: Source
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,19 +162,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1140610711101789692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435310b227637c54f8af21d0e9bc23e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfWoods: 10
 --- !u!208 &-323602830778439537
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -216,3 +203,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &-7800483266069121709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435310b227637c54f8af21d0e9bc23e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfWoods: 10

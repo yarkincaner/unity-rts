@@ -7,13 +7,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
 {
     void Update()
     {
-        if (InteractWithCombat() == true)
+        if (photonView.IsMine)
         {
-            return;
-        }
-        if (InteractWithMovement() == true)
-        {
-            return;
+            if (InteractWithCombat() == true)
+            {
+                return;
+            }
+            if (InteractWithMovement() == true)
+            {
+                return;
+            }
         }
     }
 
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 continue;
             }
-
+            
             if (Input.GetMouseButtonDown(0))
             {
                 GetComponent<Fighter>().Attack(target);
@@ -43,7 +46,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
         if (hasHit)
         {
-            if (Input.GetMouseButtonDown(0)) 
+            if (Input.GetMouseButtonDown(0))
             {
                 if (photonView.IsMine)
                 {
@@ -51,7 +54,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     //GetComponent<Mover>().StartMoveAction(hit.point);
                 }
             }
-            
             return true;
         }
 
@@ -62,4 +64,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
+
+    
 }

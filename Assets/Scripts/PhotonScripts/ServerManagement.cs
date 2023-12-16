@@ -13,6 +13,7 @@ public class ServerManagement : MonoBehaviourPunCallbacks
 
     void ConnectToServer()
     {
+        PhotonNetwork.NickName = "Player" + Random.Range(0, 10000);
         PhotonNetwork.ConnectUsingSettings();
     }
 

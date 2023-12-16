@@ -6,25 +6,43 @@ using UnityEngine.AI;
 
 public class Mover : MonoBehaviourPunCallbacks, IAction
 {
+    private bool isSelected;
+
+    private void Start()
+    {
+        isSelected = false;
+    }
+
     void Update()
     {
         UpdateAnimator();
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            isSelected = false;
+        }
     }
 
     [PunRPC]
     public void StartMoveAction(Vector3 hit)
     {
-        GetComponent<ActionScheduler>().StartAction(this);
-        GetComponent<Fighter>().Cancel();
-        GetComponent<NavMeshAgent>().destination = hit;
-        GetComponent<NavMeshAgent>().isStopped = false;
+        if (isSelected)
+        {
+            GetComponent<ActionScheduler>().StartAction(this);
+            GetComponent<Fighter>().Cancel();
+            GetComponent<NavMeshAgent>().destination = hit;
+            GetComponent<NavMeshAgent>().isStopped = false;
+        }
     }
 
     [PunRPC]
     public void MoveTo(Vector3 hit)
     {
-        GetComponent<NavMeshAgent>().destination = hit;
-        GetComponent<NavMeshAgent>().isStopped = false;
+        if (isSelected)
+        {
+            GetComponent<NavMeshAgent>().destination = hit;
+            GetComponent<NavMeshAgent>().isStopped = false;
+        }
     }
 
     [PunRPC]
@@ -39,5 +57,10 @@ public class Mover : MonoBehaviourPunCallbacks, IAction
         Vector3 localVelocity = transform.InverseTransformDirection(velocity);
         float speed = localVelocity.z;
         GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+    }
+    
+    private void OnMouseDown()
+    {
+        isSelected = true;
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - UnitsMenu
   - Selectable
   - Source
+  - Tree
+  - Stone
   layers:
   - Default
   - TransparentFX
