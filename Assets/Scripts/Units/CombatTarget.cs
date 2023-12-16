@@ -9,7 +9,13 @@ public class CombatTarget : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        isEnemey = !photonView.IsMine;
+        if (this.gameObject.tag == "Tree")
+        {
+            isEnemey = true;
+        } else
+        {
+            isEnemey = !photonView.IsMine;
+        }
     }
 
     public bool getIsEnemy() { return isEnemey; }
