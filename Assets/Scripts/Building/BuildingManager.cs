@@ -76,6 +76,7 @@ public class BuildingManager : MonoBehaviourPunCallbacks
         {
             isFixed = true;
             hasValidPlacement = true;
+            GameObject.Find("SceneManager").GetComponent<SceneManager>().setNeedUpdate(true);
         }
         else if (mode == PlacementMode.Valid)
         {
