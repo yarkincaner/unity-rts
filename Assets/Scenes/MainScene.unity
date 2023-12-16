@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnedPlayerPrefab: {fileID: 1136217511929243243, guid: 1f7548eac0e893f4288258e9719bb71c, type: 3}
-  resources: {fileID: 5710337757393920012, guid: b555e11bfc8d3754e834f26c14d0c827, type: 3}
+  resources: {fileID: 2339485341002883766, guid: b555e11bfc8d3754e834f26c14d0c827, type: 3}
   spawnPosition: {x: 50, y: 10, z: 60}
 --- !u!1 &703073303
 GameObject:

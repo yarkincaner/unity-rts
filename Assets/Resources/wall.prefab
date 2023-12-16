@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7607669455621910533}
   - component: {fileID: -3576418034454129079}
   - component: {fileID: -4524428272368481769}
+  - component: {fileID: 700196646342577670}
   m_Layer: 0
   m_Name: wall
   m_TagString: Building
@@ -257,6 +258,22 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!208 &700196646342577670
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.8880002, y: 4.7450004, z: 3.5240002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 2.0630002, y: 4.1520004, z: -0.07700001}
+  m_TimeToStationary: 0.5
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

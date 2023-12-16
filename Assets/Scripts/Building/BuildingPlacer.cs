@@ -86,6 +86,7 @@ public class BuildingPlacer : MonoBehaviourPunCallbacks
 
     public void SetBuildingPrefab(GameObject prefab)
     {
+        // if player has enough resources
         buildingPrefab = prefab;
         PrepareBuilding();
         //this.gameObject.GetComponent<PhotonView>().RPC("PrepareBuilding", RpcTarget.All, null);
