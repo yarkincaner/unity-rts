@@ -16,11 +16,19 @@ public class Health : MonoBehaviourPunCallbacks
         {
             if (gameObject.tag == "Tree" && attackerName.Equals(PhotonNetwork.NickName))
             {
-                 int numOfWoods = GetComponent<MyTree>().getNumOfWoods();
+                 int numOfWoods = GetComponent<MyResource>().getNumOfResources();
                 //player.GetComponent<MyResources>().setWoods(numOfWoods);
                 GameObject.FindWithTag("Player").GetComponent<MyResources>().setWoods(numOfWoods);
+            } else if (gameObject.tag == "Stone" && attackerName.Equals(PhotonNetwork.NickName))
+            {
+                int numOfStones = GetComponent<MyResource>().getNumOfResources();
+                //player.GetComponent<MyResources>().setWoods(numOfWoods);
+                GameObject.FindWithTag("Player").GetComponent<MyResources>().setStone(numOfStones);
             }
-            PhotonNetwork.Destroy(PhotonView.Find(this.photonView.ViewID));
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
         }
     }
 }

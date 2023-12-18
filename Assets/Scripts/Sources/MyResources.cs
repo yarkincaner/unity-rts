@@ -41,7 +41,7 @@ public class MyResources : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            woodsAmount += amount;
+            stonesAmount += amount;
             UpdateTexts();
         }
     }

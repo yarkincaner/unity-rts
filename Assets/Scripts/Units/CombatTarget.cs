@@ -9,7 +9,7 @@ public class CombatTarget : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        if (this.gameObject.tag == "Tree")
+        if (this.gameObject.tag == "Tree" || this.gameObject.tag == "Stone")
         {
             isEnemey = true;
         } else

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -323602830778439537}
   - component: {fileID: -5004882715851452364}
   - component: {fileID: -4076807041360573829}
-  - component: {fileID: -7800483266069121709}
+  - component: {fileID: 8423216932188728188}
   m_Layer: 8
   m_Name: Fir_Tree
   m_TagString: Tree
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
---- !u!114 &-7800483266069121709
+--- !u!114 &8423216932188728188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 192044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435310b227637c54f8af21d0e9bc23e2, type: 3}
+  m_Script: {fileID: 11500000, guid: d98be31ab26c7c84895b36eb3b265215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfWoods: 10
+  numOfResources: 10
