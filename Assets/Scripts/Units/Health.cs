@@ -25,10 +25,8 @@ public class Health : MonoBehaviourPunCallbacks
                 //player.GetComponent<MyResources>().setWoods(numOfWoods);
                 GameObject.FindWithTag("Player").GetComponent<MyResources>().setStone(numOfStones);
             }
-            if (photonView.IsMine)
-            {
-                PhotonNetwork.Destroy(this.gameObject);
-            }
+            
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

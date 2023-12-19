@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks
         //    PhotonNetwork.Instantiate(resources.gameObject.transform.GetChild(i).name, new Vector3(randomPoint, 0f, randomPoint), Quaternion.identity, 0, null);
         //}
 
-        resources = PhotonNetwork.Instantiate(resources.name, Vector3.zero, Quaternion.identity, 0, null);
+        //resources = PhotonNetwork.Instantiate(resources.name, Vector3.zero, Quaternion.identity, 0, null);
     }
 
     public override void OnLeftRoom()
