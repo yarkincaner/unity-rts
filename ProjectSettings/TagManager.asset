@@ -11,6 +11,8 @@ TagManager:
   - Tree
   - Stone
   - Building
+  - Fighter
+  - Villager
   layers:
   - Default
   - TransparentFX

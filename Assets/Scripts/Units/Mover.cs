@@ -29,7 +29,13 @@ public class Mover : MonoBehaviourPunCallbacks, IAction
         if (isSelected)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            GetComponent<Fighter>().Cancel();
+            if (gameObject.tag == "Fighter")
+            {
+                GetComponent<Fighter>().Cancel();
+            } else if (gameObject.tag == "Villager")
+            {
+                GetComponent<Villager>().Cancel();
+            }
             GetComponent<NavMeshAgent>().destination = hit;
             GetComponent<NavMeshAgent>().isStopped = false;
         }

@@ -137,9 +137,9 @@ GameObject:
   m_Component:
   - component: {fileID: 394469995311719034}
   - component: {fileID: 1671340948683742994}
-  - component: {fileID: 1652469044115768898}
   - component: {fileID: 3543423398946913974}
   - component: {fileID: 6087388433699166428}
+  - component: {fileID: 1652469044115768898}
   - component: {fileID: 1627054279712965406}
   - component: {fileID: -6218420207664773159}
   - component: {fileID: 7628138303802022446}
@@ -149,9 +149,10 @@ GameObject:
   - component: {fileID: 3689954654611737308}
   - component: {fileID: 7246314819218812559}
   - component: {fileID: 551073386752404670}
+  - component: {fileID: 4755705779731609736}
   m_Layer: 0
   m_Name: Soldier
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,30 +195,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1652469044115768898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215339698331773819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 1627054279712965406}
-  - {fileID: -6218420207664773159}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!54 &3543423398946913974
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -268,6 +245,30 @@ CapsuleCollider:
   m_Height: 2.03039
   m_Direction: 1
   m_Center: {x: 0, y: 0.89404166, z: 0}
+--- !u!114 &1652469044115768898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215339698331773819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1627054279712965406}
+  - {fileID: -6218420207664773159}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &1627054279712965406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +399,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08eb734edabf2f4792e4828f2ce96dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4755705779731609736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215339698331773819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbf98c081ab22a48bcb63fbbd7d4989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfWoods: 5
+  numOfStones: 5
 --- !u!1 &1645348412600669795
 GameObject:
   m_ObjectHideFlags: 0

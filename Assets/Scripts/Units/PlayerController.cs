@@ -33,7 +33,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
             
             if (Input.GetMouseButtonDown(0))
             {
-                GetComponent<Fighter>().Attack(target);
+                if (gameObject.tag == "Fighter")
+                {
+                    GetComponent<Fighter>().Attack(target);
+                } else if (gameObject.tag == "Villager")
+                {
+                    GetComponent<Villager>().Gather(target);
+                }
             }
             return true;
         }

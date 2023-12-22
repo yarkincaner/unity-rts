@@ -1916,6 +1916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2711e185b213b414b883756dfd052ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1136217511929243243}
   soldierPrefab: {fileID: 1215339698331773819, guid: d7e09f6b8a0a63a449232f7bbe9cedd4, type: 3}
   villagerPrefab: {fileID: 6792327054025522797, guid: 64db8d48fab1ceb43a8ee5d52643029a, type: 3}
 --- !u!1 &6302675928364834793
