@@ -62,15 +62,22 @@ public class Fighter : MonoBehaviourPunCallbacks, IAction
 
     public void Attack(CombatTarget target)
     {
-        GetComponent<ActionScheduler>().StartAction(this);
-        if (target.tag == "Building")
+        if (target.tag != "Tree" && target.tag != "Stone")
         {
-            weaponRange = 10.0f;
+            if (target.tag == "Building")
+            {
+                weaponRange = 10.0f;
+            }
+            else
+            {
+                weaponRange = 5.0f;
+            }
+            GetComponent<ActionScheduler>().StartAction(this);
+            targetObject = target.transform;
         } else
         {
-            weaponRange = 5.0f;
+            Debug.Log("You can not attack " + target.name);
         }
-        targetObject = target.transform;
         //Debug.Log("Attack is done");
     }
     public void Cancel()
