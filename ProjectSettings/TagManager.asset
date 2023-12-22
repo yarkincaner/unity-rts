@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Terrain
   - UnitsMenu
+  - Selectable
+  - Source
+  - Tree
+  - Stone
+  - Building
+  - Fighter
+  - Villager
   layers:
   - Default
   - TransparentFX

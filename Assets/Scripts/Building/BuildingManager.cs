@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,11 @@ public enum PlacementMode
     Invalid
 }
 
-public class BuildingManager : MonoBehaviour
+public class BuildingManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private int numOfWoods;
+    [SerializeField] private int numOfStones;
+
     public Material validPlacementMaterial;
     public Material invalidPlacementMaterial;
 
@@ -23,15 +27,17 @@ public class BuildingManager : MonoBehaviour
 
     private int nObstacles;
 
-    private GameObject unitsMenu;
+    private GameObject slot1_button;
+    private GameObject slot2_button;
 
     private void Awake()
     {
         hasValidPlacement = true;
         isFixed = true;
         nObstacles = 0;
-        unitsMenu = GameObject.FindWithTag("UnitsMenu");
-        unitsMenu.SetActive(false);
+        slot1_button = GameObject.Find("Slot1_Button");
+        slot2_button = GameObject.Find("Slot2_Button");
+        HideUI();
 
         InitializeMaterials();
     }
@@ -66,12 +72,14 @@ public class BuildingManager : MonoBehaviour
     }
 #endif
 
+    [PunRPC]
     public void SetPlacementMode(PlacementMode mode)
     {
         if (mode == PlacementMode.Fixed)
         {
             isFixed = true;
             hasValidPlacement = true;
+            GameObject.Find("SceneManager").GetComponent<SceneManager>().setNeedUpdate(true);
         }
         else if (mode == PlacementMode.Valid)
         {
@@ -131,13 +139,47 @@ public class BuildingManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // if photonview isMine
-        if (unitsMenu.activeInHierarchy)
+        if (photonView.IsMine)
         {
-            unitsMenu.SetActive(false);
-        } else
-        {
-            unitsMenu.SetActive(true);
+            if (slot1_button.GetComponent<Image>().enabled)
+            {
+                HideUI();
+            } else
+            {
+                ShowUI();
+            }
         }
+    }
+
+    [PunRPC]
+    public void setIsFixed(bool isFixed)
+    {
+        this.isFixed = isFixed;
+    }
+
+    public int getWoods()
+    {
+        return numOfWoods;
+    }
+
+    public int getStones()
+    {
+        return numOfWoods;
+    }
+
+    void HideUI()
+    {
+        slot1_button.GetComponent<Image>().enabled = false;
+        slot1_button.GetComponent<Button>().enabled = false;
+        slot2_button.GetComponent<Image>().enabled = false;
+        slot2_button.GetComponent<Button>().enabled = false;
+    }
+
+    void ShowUI()
+    {
+        slot1_button.GetComponent<Image>().enabled = true;
+        slot1_button.GetComponent<Button>().enabled = true;
+        slot2_button.GetComponent<Image>().enabled = true;
+        slot2_button.GetComponent<Button>().enabled = true;
     }
 }
