@@ -911,6 +911,7 @@ MonoBehaviour:
   terrainLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  player: {fileID: 1136217511929243243}
 --- !u!1 &2698812713078455631
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class BuildingPlacer : MonoBehaviourPunCallbacks
 
     private GameObject buildingPrefab;
     private GameObject toBuild;
+    [SerializeField] private GameObject player;
 
     private Camera mainCamera;
 
@@ -28,7 +29,7 @@ public class BuildingPlacer : MonoBehaviourPunCallbacks
     private void Update()
     {
         // If in build mode
-        if (buildingPrefab != null)
+        if (buildingPrefab != null && toBuild != null)
         {
             // right-click: cancel build mode
             if (Input.GetMouseButtonDown(1)) {
@@ -61,6 +62,7 @@ public class BuildingPlacer : MonoBehaviourPunCallbacks
                 if (Input.GetMouseButtonDown(0))
                 {
                     BuildingManager manager = toBuild.GetComponent<BuildingManager>();
+
                     if (manager.hasValidPlacement)
                     {
                         //manager.SetPlacementMode(PlacementMode.Fixed);
@@ -72,6 +74,8 @@ public class BuildingPlacer : MonoBehaviourPunCallbacks
                             PrepareBuilding();
                         } else
                         {
+                            player.GetComponent<MyResources>().setStone(-buildingPrefab.GetComponent<BuildingManager>().getStones());
+                            player.GetComponent<MyResources>().setWoods(-buildingPrefab.GetComponent<BuildingManager>().getWoods());
                             buildingPrefab = null;
                             toBuild = null;
                         }
@@ -88,7 +92,15 @@ public class BuildingPlacer : MonoBehaviourPunCallbacks
     {
         // if player has enough resources
         buildingPrefab = prefab;
-        PrepareBuilding();
+        int playerWoods = player.GetComponent<MyResources>().getWoods();
+        int playerStones = player.GetComponent<MyResources>().getStones();
+        if (playerWoods >= buildingPrefab.GetComponent<BuildingManager>().getWoods() && playerStones >= buildingPrefab.GetComponent<BuildingManager>().getStones())
+        {
+            PrepareBuilding();
+        } else
+        {
+            Debug.Log("You don't have enough resources for this type of building");
+        }
         //this.gameObject.GetComponent<PhotonView>().RPC("PrepareBuilding", RpcTarget.All, null);
     }
     private void PrepareBuilding()

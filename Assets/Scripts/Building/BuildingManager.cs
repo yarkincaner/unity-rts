@@ -13,6 +13,9 @@ public enum PlacementMode
 
 public class BuildingManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private int numOfWoods;
+    [SerializeField] private int numOfStones;
+
     public Material validPlacementMaterial;
     public Material invalidPlacementMaterial;
 
@@ -152,6 +155,16 @@ public class BuildingManager : MonoBehaviourPunCallbacks
     public void setIsFixed(bool isFixed)
     {
         this.isFixed = isFixed;
+    }
+
+    public int getWoods()
+    {
+        return numOfWoods;
+    }
+
+    public int getStones()
+    {
+        return numOfWoods;
     }
 
     void HideUI()

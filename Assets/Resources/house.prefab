@@ -185,6 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e01ce3490bc3f43ba279259671f97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfWoods: 20
+  numOfStones: 20
   validPlacementMaterial: {fileID: 2100000, guid: a9218b2c9d3936448bbd939f0f39db17, type: 2}
   invalidPlacementMaterial: {fileID: 2100000, guid: bc2f9e39a5998f34f93c70cc0d736e82, type: 2}
   meshComponents:
