@@ -16,7 +16,7 @@ MonoBehaviour:
     AppIdRealtime: c4ebfb76-4c1a-4137-acc1-ae7805c77b70
     AppIdFusion: 
     AppIdChat: 
-    AppIdVoice: 
+    AppIdVoice: 026ce921-3b63-4c31-ae59-7fda08eb7dd0
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
@@ -28,29 +28,30 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: tr
+  DevRegion: 
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - CantHearYou
+  - ChangeColour
   - ClickRpc
   - DestroyRpc
-  - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
-  - TakeDamage
-  - MoveTo
+  - HeresWhy
   - AttackMethod
   - Cancel
-  - StartMoveAction
-  - PrepareBuilding
+  - DestroySpaceship
+  - Fire
+  - MoveTo
+  - RespawnSpaceship
   - setIsFixed
   - SetPlacementMode
-  - TransformPos
   - setStone
   - setWoods
-  - UpdateTexts
+  - StartMoveAction
+  - TakeDamage
+  - TransformPos
   DisableAutoOpenWizard: 1
   ShowSettings: 1
-  DevRegionSetOnce: 1
+  DevRegionSetOnce: 0
